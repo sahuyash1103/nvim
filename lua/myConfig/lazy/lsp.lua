@@ -30,7 +30,7 @@ return {
                 "rust_analyzer",
                 "gopls",
                 "pylsp",
-                "java_language_server",
+                "jdtls",
                 "eslint",
                 "tsp_server"
             },
