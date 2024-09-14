@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "onedark"
+	color = color or "tokyonight"
 	vim.cmd.colorscheme(color)
 
 --	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -7,6 +7,7 @@ function ColorMyPencils(color)
 end
 
 vim.api.nvim_set_keymap('n', '<leader>onedark', ':lua ColorMyPencils("onedark")<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>night', ':lua ColorMyPencils("tokyonight")<CR>', { noremap = true, silent = true })
 
 
 return {

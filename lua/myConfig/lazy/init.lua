@@ -7,19 +7,21 @@ return {
     },
     {
         "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
-        --     local harpoon = require("harpoon")
-        --     harpoon:setup()
-        --     vim.keymap.set("n", "<leader>a", function() harpoon:add() end)
-        --     vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu() end)
-        --     vim.keymap.set("n", "<C-h>", function() harpoon.ui:select(1) end)
-        --     vim.keymap.set("n", "<C-t>", function() harpoon.ui:select(2) end)
-        --     vim.keymap.set("n", "<C-n>", function() harpoon.ui:select(3) end)
-        --     vim.keymap.set("n", "<C-s>", function() harpoon.ui:select(4) end)
-        --     vim.keymap.set("n", "<leader><C-h>", function() harpoon:replace_at(1) end)
-        --     vim.keymap.set("n", "<leader><C-t>", function() harpoon:replace_at(2) end)
-        --     vim.keymap.set("n", "<leader><C-n>", function() harpoon:replace_at(3) end)
-        --     vim.keymap.set("n", "<leader><C-s>", function() harpoon:replace_at(4) end)
+            local harpoon = require("harpoon")
+            ---@diagnostic disable-next-line: missing-parameter
+            harpoon:setup()
+            local function map(lhs, rhs, opts)
+                vim.keymap.set("n", lhs, rhs, opts or {})
+            end
+            map("<leader>a", function() harpoon:list():add() end)
+            map("<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+            map("<C-h>", function() harpoon:list():select(1) end)
+            map("<C-t>", function() harpoon:list():select(2) end)
+            map("<C-n>", function() harpoon:list():select(3) end)
+            map("<C-s>", function() harpoon:list():select(4) end)
         end
     },
     {
